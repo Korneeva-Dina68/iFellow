@@ -35,8 +35,7 @@ public class RunTest {
         Assertions.assertEquals(13, perimeter);
     }
     @Test
-    public void main () throws InterruptedException {
+    public void main () {
         open("https://demoqa.com/automation-practice-form");
-        Thread.sleep(3000);
     }
 }
