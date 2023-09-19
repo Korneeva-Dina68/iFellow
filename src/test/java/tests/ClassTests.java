@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.open;
 import static steps.AutorizationPageSteps.autorization;
 import static steps.AutorizationPageSteps.checkAutorization;
+import static steps.MainPageSteps.checkGoTestProject;
+import static steps.MainPageSteps.goTestProject;
 
 public class ClassTests extends WebHooks {
     private String login = "AT12";
@@ -16,5 +18,7 @@ public class ClassTests extends WebHooks {
         open("https://edujira.ifellow.ru/secure/Dashboard.jspa");
         autorization(login, password);
         checkAutorization();
+        goTestProject();
+        checkGoTestProject();
     }
 }
