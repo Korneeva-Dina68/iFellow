@@ -11,6 +11,7 @@ import static steps.AutorizationPageSteps.checkAutorization;
 import static steps.MainPageSteps.checkGoTestProject;
 import static steps.MainPageSteps.goTestProject;
 import static steps.TaskPageSteps.*;
+import static steps.TestSeleniumPageSteps.*;
 
 public class ClassTests extends WebHooks {
     private String login = "AT12";
@@ -27,5 +28,9 @@ public class ClassTests extends WebHooks {
         goTask();
         checkGoTask();
         quantityTask();
+        testSelenium();
+        checkTestPage();
+        checkStatucAndVersion();
+
     }
 }
