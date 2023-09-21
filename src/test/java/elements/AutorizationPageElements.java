@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class AutorizationPageElements {
     public static SelenideElement userName = $x("//input[@name='os_username']");
     public static SelenideElement password = $x("//input[@name='os_password']");
-    public static SelenideElement enter = $x("//input[@value='Войти']");
-    public static SelenideElement userOptions = $x("//li[@id='user-options']");
+    public static SelenideElement buttonEnter = $x("//input[@value='Войти']");
+    public static SelenideElement userOptions = $x("//a[@id='header-details-user-fullname']");
+    public static SelenideElement exit = $x("//div[@class='aui-dropdown2-section']//a[text()='Выйти']");
 }

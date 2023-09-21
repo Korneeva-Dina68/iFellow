@@ -1,22 +1,20 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import elements.TestSeleniumPageElements;
+import org.junit.jupiter.api.Assertions;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class TestSeleniumPageSteps extends TestSeleniumPageElements {
-    public static void testSelenium() {
+    public static void goTestSelenium() {
         searchInput.setValue("TestSelenium");
         testSelenium.click();
     }
-    public static void checkTestPage() {
-        checkTestSelenium.shouldHave(Condition.exactText("TestSelenium"));
+
+    public static void checkTestSeleniumPage() {
+        Assertions.assertEquals(checkTestSelenium.getText(), "TestSelenium");
     }
-    public static void checkStatusAndVersion() {
+
+    public static void statusAndVersion() {
         String text = status.text();
         String ver = version.text();
         System.out.println("Статус задачи: " + text + ", версия: " + ver);
