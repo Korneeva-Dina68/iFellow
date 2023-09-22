@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.Condition;
 import elements.ReportedByMePageElements;
 import org.junit.jupiter.api.Assertions;
 
@@ -8,37 +9,37 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class ReportedByMePageSteps extends ReportedByMePageElements {
     public static void clickTaskHeaderblok() {
-        taskHeaderblok.click();
+        taskHeaderblok.shouldBe(Condition.visible).click();
     }
 
     public static void clickReportedByMe() {
-        reportedByMe.click();
+        reportedByMe.shouldBe(Condition.visible).click();
     }
 
     public static void checkReportedByMePage() {
-        Assertions.assertEquals(reportedByMeText.getText(), "Сообщенные мной");
+        Assertions.assertEquals(reportedByMeText.shouldBe(Condition.visible).getText(), "Сообщенные мной");
     }
 
     public static void clickAtWork() {
-        atWork.click();
+        atWork.shouldBe(Condition.visible).click();
         sleep(2000);
     }
 
     public static void checkStatusAtWork() {
-        Assertions.assertEquals("В РАБОТЕ", status.getText());
+        Assertions.assertEquals("В РАБОТЕ", status.shouldBe(Condition.visible).getText());
     }
 
     public static void clickButtonBusinessProcess() {
-        businessProcess.click();
+        businessProcess.shouldBe(Condition.visible).click();
         sleep(2000);
     }
 
     public static void clickButtonDone() {
-        doneButton.click();
+        doneButton.shouldBe(Condition.visible).click();
         sleep(2000);
     }
 
     public static void checkStatusDone() {
-        Assertions.assertEquals("ГОТОВО", status.getText());
+        Assertions.assertEquals("ГОТОВО", status.shouldBe(Condition.visible).getText());
     }
 }

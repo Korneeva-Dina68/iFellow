@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.Condition;
 import elements.CreatingTaskPageElements;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
@@ -8,61 +9,55 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class CreatingTaskPageSteps extends CreatingTaskPageElements {
     public static void creatingNewTask() {
-        createButton.click();
+        createButton.shouldBe(Condition.visible).click();
     }
 
     public static void checkOpenWindowCreatingTask() {
-        Assertions.assertEquals(checkCreateButton.getText(), "Создание задачи");
+        Assertions.assertEquals(checkCreateButton.shouldBe(Condition.visible).getText(), "Создание задачи");
     }
 
-    public static void typeTaskBug() {
-        typeTask.doubleClick().sendKeys(Keys.DELETE);
-        typeTask.click();
-        sleep(2000);
-        typeTask.sendKeys(Keys.ARROW_DOWN);
-        typeTask.sendKeys(Keys.ARROW_DOWN);
-        typeTask.sendKeys(Keys.ENTER);
+    public static void typeTaskBug(String typeTaskName) {
+        typeTask.shouldBe(Condition.visible).doubleClick().sendKeys(Keys.DELETE);
+        typeTask.shouldBe(Condition.visible).sendKeys(typeTaskName);
+        typeTask.shouldBe(Condition.visible).sendKeys(Keys.ENTER);
     }
 
     public static void createSubject(String subject) {
-        formSubject.sendKeys(subject);
+        formSubject.shouldBe(Condition.visible).sendKeys(subject);
     }
 
     public static void creatingDescription(String description) {
-        formDescription.setValue(description);
+        formDescription.shouldBe(Condition.visible).setValue(description);
     }
 
     public static void selectInVersions1() {
-        formVersion1.click();
+        formVersion1.shouldBe(Condition.visible).click();
     }
 
-    public static void createPriorityHighest() {
-        priority.doubleClick().sendKeys(Keys.DELETE);
-        priority.click();
-        sleep(2000);
-        priority.sendKeys(Keys.ARROW_DOWN);
-        priority.sendKeys(Keys.UP);
-        priority.sendKeys(Keys.ENTER);
+    public static void createPriorityHighest(String priorityName) {
+        priority.shouldBe(Condition.visible).doubleClick().sendKeys(Keys.DELETE);
+        priority.shouldBe(Condition.visible).sendKeys(priorityName);
+        priority.shouldBe(Condition.visible).sendKeys(Keys.ENTER);
     }
 
     public static void createMark(String markValue) {
-        mark.doubleClick().setValue(markValue);
-        mark.pressEnter();
+        mark.shouldBe(Condition.visible).doubleClick().setValue(markValue);
+        mark.shouldBe(Condition.visible).pressEnter();
     }
 
     public static void createEnvironment(String environment) {
-        formEnvironment.sendKeys(environment);
+        formEnvironment.shouldBe(Condition.visible).sendKeys(environment);
     }
 
     public static void selectAffectedVersions2() {
-        affectedVersions2.click();
+        affectedVersions2.shouldBe(Condition.visible).click();
     }
 
     public static void selectAppointMe() {
-        appointMeButton.click();
+        appointMeButton.shouldBe(Condition.visible).click();
     }
 
     public static void clickCreateTask() {
-        buttonCreateTask.click();
+        buttonCreateTask.shouldBe(Condition.visible).click();
     }
 }
