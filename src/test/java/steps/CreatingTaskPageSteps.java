@@ -5,7 +5,8 @@ import elements.CreatingTaskPageElements;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Selenide.sleep;
+import java.time.Duration;
+
 
 public class CreatingTaskPageSteps extends CreatingTaskPageElements {
     public static void creatingNewTask() {
@@ -59,5 +60,9 @@ public class CreatingTaskPageSteps extends CreatingTaskPageElements {
 
     public static void clickCreateTask() {
         buttonCreateTask.shouldBe(Condition.visible).click();
+    }
+
+    public static void checkSuccessfullyCreatedTask() {
+        Assertions.assertEquals(successfullyCreated.shouldBe(Condition.visible, Duration.ofSeconds(1)).getText(), " успешно создан.");
     }
 }

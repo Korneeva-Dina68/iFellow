@@ -17,5 +17,6 @@ public class CreatingTaskPageElements {
     public static SelenideElement affectedVersions2 = $x("//select[@id='versions']//option[@value='10001']");
     public static SelenideElement appointMeButton = $x("//button[text()='Назначить меня']");
     public static SelenideElement buttonCreateTask = $x("//input[@name='Edit']");
+    public static SelenideElement successfullyCreated = $x("//*[text()=' успешно создан.']");
 
 }

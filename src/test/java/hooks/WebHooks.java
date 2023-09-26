@@ -1,22 +1,18 @@
 package hooks;
 
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import com.codeborne.selenide.WebDriverRunner;
+import io.cucumber.java.After;
+import io.cucumber.junit.Cucumber;
+import org.junit.runner.RunWith;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
+@RunWith(Cucumber.class)
 public class WebHooks {
 
-    @AfterEach
-    void tearDown() {
-        Selenide.closeWebDriver();
-    }
-
-    @BeforeEach
-    void setUp() {
-        open("https://edujira.ifellow.ru/secure/Dashboard.jspa");
-        getWebDriver().manage().window().maximize();
+    @After
+    public void tearDown() {
+        Selenide.clearBrowserLocalStorage();
+        Selenide.clearBrowserCookies();
+        WebDriverRunner.clearBrowserCache();
     }
 }
