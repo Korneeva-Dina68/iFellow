@@ -1,6 +1,5 @@
 package api;
 
-import io.restassured.response.Response;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -12,8 +11,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class CreateUser {
-    public static String id;
-    public static String createdAt;
 
     public static void createUserTest() throws IOException {
 
@@ -21,7 +18,7 @@ public class CreateUser {
         body.put("name", "Tomato");
         body.put("job", "Eat maket");
 
-        Response createUserTest = given()
+        given()
                 .body(body.toString())
                 .when()
                 .post("https://reqres.in/api/users/")
@@ -30,12 +27,6 @@ public class CreateUser {
                 .body("name", equalTo("Tomato"))
                 .body("job", equalTo("Eat maket"))
                 .body("id", notNullValue())
-                .body("createdAt", notNullValue())
-                .extract()
-                .response();
-
-        id = new JSONObject(createUserTest.getBody().asString()).get("id").toString();
-        createdAt = new JSONObject(createUserTest.getBody().asString()).get("createdAt").toString();
-        System.out.println("Новый пользователь с id " + id + " создан " + createdAt);
+                .body("createdAt", notNullValue());
     }
 }

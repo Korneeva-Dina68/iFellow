@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 public class RequestSpecification {
     @BeforeEach
     void setUp() {
-        RestAssured.baseURI = "https://rickandmortyapi.com/api";
         RestAssured.requestSpecification = new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .build();

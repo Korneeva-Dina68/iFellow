@@ -18,6 +18,7 @@ public class APISteps {
 
     public static void gettingCharacterInformation(String id) {
         Response gettingCharacterInformation = given()
+                .baseUri("https://rickandmortyapi.com/api")
                 .when()
                 .get("/character/" + id)
                 .then()
@@ -27,16 +28,14 @@ public class APISteps {
         episode = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONArray("episode").length() - 1;
         lastEpisode = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONArray("episode").get(episode).toString();
         String nameCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).get("name").toString();
-        System.out.println("Последний эпизод, где появляется " + nameCharacter + ": " + lastEpisode);
 
         speciesCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).get("species").toString();
         locCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONObject("location").get("name").toString();
-        System.out.println("Раса " + id + "го персонажа: " + speciesCharacter);
-        System.out.println("Местоположение " + id + "го персонажа: " + locCharacter);
     }
 
     public static void gettingLastCharacter() {
         Response gettingLastCharacter = given()
+                .baseUri("https://rickandmortyapi.com/api")
                 .when()
                 .get("/episode/" + (episode + 1))
                 .then()
@@ -46,6 +45,7 @@ public class APISteps {
         idLastCharacter = new JSONObject(gettingLastCharacter.getBody().asString()).getJSONArray("characters").get(new JSONObject(gettingLastCharacter.getBody().asString()).getJSONArray("characters").length() - 1).toString().replaceAll("[^0-9]", "");
 
         Response locationLastCharacter = given()
+                .baseUri("https://rickandmortyapi.com/api")
                 .when()
                 .get("/character/" + idLastCharacter)
                 .then()
@@ -54,8 +54,6 @@ public class APISteps {
 
         speciesLastCharacter = new JSONObject(locationLastCharacter.getBody().asString()).get("species").toString();
         locLastCharacter = new JSONObject(locationLastCharacter.getBody().asString()).getJSONObject("location").get("name").toString();
-        System.out.println("Раса последнего персонажа: " + speciesLastCharacter);
-        System.out.println("Местоположение последнего персонажа: " + locLastCharacter);
     }
 
     public static void checkLocationAndSpecies() {
