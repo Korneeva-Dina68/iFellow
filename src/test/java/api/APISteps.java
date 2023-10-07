@@ -27,7 +27,6 @@ public class APISteps {
 
         episode = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONArray("episode").length() - 1;
         lastEpisode = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONArray("episode").get(episode).toString();
-        String nameCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).get("name").toString();
 
         speciesCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).get("species").toString();
         locCharacter = new JSONObject(gettingCharacterInformation.getBody().asString()).getJSONObject("location").get("name").toString();
