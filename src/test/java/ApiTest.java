@@ -9,16 +9,16 @@ import static api.CreateUser.createUserTest;
 
 
 public class ApiTest extends RequestSpecification {
-    @DisplayName("Погружение в API")
+    @DisplayName("Тестирование API по сериалу Рик и Морти")
     @Test
     public void RickAndMortyApi() throws IOException {
         gettingCharacterInformation("2");
         gettingLastCharacter();
-        checkLocationAndSpecies();
-        checkLocationAndSpeciesTryAndCatch();
+        gettingSpeciesAndLocLastCharacter(idLastCharacter);
+        checkLocationAndSpeciesTryAndCatch(speciesLastCharacter, speciesCharacter, locLastCharacter, locCharacter);
     }
 
-    @DisplayName("Углубление в API")
+    @DisplayName("Углубленное тестирование API")
     @Test
     void createUserAPITest() throws IOException {
         createUserTest();
