@@ -1,4 +1,5 @@
 import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +11,8 @@ import java.io.IOException;
 import static api.APISteps.*;
 import static api.CreateUser.createUserTest;
 
-
+@DisplayName("Тестирование API")
+@Owner("Корнеева")
 public class ApiTest extends RequestSpecification {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Тестирование API по сериалу Рик и Морти")
@@ -24,7 +26,7 @@ public class ApiTest extends RequestSpecification {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("201: успешное создание юзера")
+    @DisplayName("Успешное создание юзера")
     @Description("Создать запрос для создания юзера и свериться, что полученный response имеет валидные данные по значениям key и value")
     @Test
     void createUserAPITest() throws IOException {

@@ -1,9 +1,7 @@
 package api;
 
-import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import org.json.JSONObject;
-import org.junit.jupiter.api.DisplayName;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,8 +11,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-@DisplayName("Углубленное тестирование API")
-@Owner("Корнеева")
 public class CreateUser {
 
     @Step("Создать запрос для создания юзера")

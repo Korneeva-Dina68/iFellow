@@ -1,17 +1,13 @@
 package api;
 
-import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.opentest4j.AssertionFailedError;
 
 import static io.restassured.RestAssured.given;
 
-@DisplayName("Тестирование API по сериалу Рик и Морти")
-@Owner("Корнеева")
 public class APISteps {
     public static String lastEpisode;
     public static int episode;
