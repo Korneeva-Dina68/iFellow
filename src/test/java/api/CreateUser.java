@@ -1,6 +1,7 @@
 package api;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 
@@ -17,9 +18,6 @@ import static org.hamcrest.Matchers.notNullValue;
 public class CreateUser {
 
     @Step("Создать запрос для создания юзера")
-    @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("201: успешное создание юзера")
-    @Description("Создать запрос для создания юзера и свериться, что полученный response имеет валидные данные по значениям key и value")
     public static void createUserTest() throws IOException {
 
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/api.json"))));

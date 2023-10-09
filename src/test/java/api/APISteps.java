@@ -1,13 +1,14 @@
 package api;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.opentest4j.AssertionFailedError;
 
 import static io.restassured.RestAssured.given;
-import org.junit.jupiter.api.*;
 
 @DisplayName("Тестирование API по сериалу Рик и Морти")
 @Owner("Корнеева")
@@ -21,9 +22,6 @@ public class APISteps {
     public static String locLastCharacter;
 
     @Step("Найти информацию по персонажу с id {id}")
-    @DisplayName("Найти информацию по персонажу")
-    @Description("Найти информацию по персонажу: получить его расу и местополежение, выбрать последний эпизод")
-    @Severity(SeverityLevel.NORMAL)
     public static void gettingCharacterInformation(String id) {
         Response gettingCharacterInformation = given()
                 .baseUri("https://rickandmortyapi.com/api")
@@ -41,9 +39,6 @@ public class APISteps {
     }
 
     @Step("Получить из списка последнего эпизода последнего персонажа")
-    @DisplayName("Получить из списка последнего эпизода последнего персонажа")
-    @Description("Получить из списка последнего эпизода последнего персонажа")
-    @Severity(SeverityLevel.NORMAL)
     public static void gettingLastCharacter() {
         Response gettingLastCharacter = given()
                 .baseUri("https://rickandmortyapi.com/api")
@@ -55,10 +50,8 @@ public class APISteps {
 
         idLastCharacter = new JSONObject(gettingLastCharacter.getBody().asString()).getJSONArray("characters").get(new JSONObject(gettingLastCharacter.getBody().asString()).getJSONArray("characters").length() - 1).toString().replaceAll("[^0-9]", "");
     }
+
     @Step("Узнать расу и местоположение последнего персонажа с id {idLastCharacter}")
-    @DisplayName("Узнать расу и местоположение последнего персонажа")
-    @Description("Узнать расу и местоположение последнего персонажа для последующего сравнения")
-    @Severity(SeverityLevel.NORMAL)
     public static void gettingSpeciesAndLocLastCharacter(String idLastCharacter) {
         Response locationLastCharacter = given()
                 .baseUri("https://rickandmortyapi.com/api")
@@ -73,9 +66,6 @@ public class APISteps {
     }
 
     @Step("Сравнить расу и местоположение двух персонажей")
-    @DisplayName("Сравнить расу и местоположение двух персонажей")
-    @Description("Сравнить расу и местоположение двух персонажей при помощи ассертов")
-    @Severity(SeverityLevel.NORMAL)
     public static void checkLocationAndSpeciesTryAndCatch(String speciesLastCharacter, String speciesCharacter, String locLastCharacter, String locCharacter) {
         try {
             Assertions.assertEquals(speciesLastCharacter, speciesCharacter);
