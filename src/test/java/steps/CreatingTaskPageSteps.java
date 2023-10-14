@@ -5,8 +5,6 @@ import elements.CreatingTaskPageElements;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class CreatingTaskPageSteps extends CreatingTaskPageElements {
     public static void creatingNewTask() {
         createButton.shouldBe(Condition.visible).click();
